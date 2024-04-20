@@ -12,7 +12,13 @@ class Soldier:
 
 
     def receiveDamage(self, damage):
+        if not self.isAlive:
+            return
+
+        self.health -= damage
+        
         if self.health <= 0:
+            self.isAlive = False
             self.isAlive = False
             return
 
