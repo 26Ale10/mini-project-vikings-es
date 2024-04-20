@@ -26,6 +26,7 @@ class War():
 
         if saxon.health <= 0:
             self.saxonArmy.remove(saxon)
+            return "A Saxon has died in combat"
 
     def saxonAttack(self):
         if len(self.vikingArmy) == 0:
@@ -38,18 +39,19 @@ class War():
         viking = random.choice(self.vikingArmy)
         saxon = random.choice(self.saxonArmy)
 
-        viking.receiveDamage(saxon.strength)
+        msg = viking.receiveDamage(saxon.strength)
 
         if viking.health <= 0:
             self.vikingArmy.remove(viking)
-
+            return
+        return msg
 
     def showStatus(self):
         if len(self.saxonArmy) == 0:
-            print("¡Los Vikingos han ganado la guerra del siglo!")
+            return "Vikings have won the war of the century!"
         elif len(self.vikingArmy) == 0:
-            print("Los Sajones han luchado por sus vidas y sobreviven otro día...")
+            return "Saxons have fought for their lives and survive another day..."
         else:
-            print("Los Vikingos y los Sajones todavía están en plena batalla.")
+            return "Vikings and Saxons are still in the thick of battle."
 
     pass

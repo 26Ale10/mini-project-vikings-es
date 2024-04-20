@@ -6,13 +6,12 @@ class Viking(Soldier):
     def __init__(self, name, health, strength):
         super().__init__(health, strength)
         self.name = name
-        print('Viking created')
 
     def attack(self):
         return self.strength
 
     def battleCry(self):
-        return 'Odin Owns You All!'
+        return "Odin Owns You All!"
 
     def receiveDamage(self, damage):
         self.health -= damage
