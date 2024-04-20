@@ -19,9 +19,4 @@ class Soldier:
         
         if self.health <= 0:
             self.isAlive = False
-            self.isAlive = False
-            return
-
-        self.health = self.health - damage
-
 
