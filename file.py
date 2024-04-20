@@ -9,12 +9,13 @@ from vikingsClasses import Viking, Saxon, War, War2
 
 import random
 
+soldier_names = ["albert","andres","archie","dani", "david","gerard","german","graham","imanol","laura"]
 
 def createGameWithNames(one, two):
     war = War2(one, two)
 
     for i in range(random.randint(10, 100)):
-        viking = Viking(random.randint(50, 100), random.randint(5, 15))
+        viking = Viking(random.choice(soldier_names), random.randint(50, 100), random.randint(5, 15))
         war.addViking(viking)
 
         saxon = Saxon(random.randint(50, 100), random.randint(5, 15))
@@ -23,10 +24,12 @@ def createGameWithNames(one, two):
     return war
 
 def runGame():
-    createGameWithNames('Alejandro', 'Obed')
+    war = createGameWithNames('Alejandro', 'Obed')
 
     round = 0
-    while war.showStatus() == "Vikings and Saxons are still in the thick of battle.":
+    # regex that check if contains "are still in the thick of battle."
+
+    while "are still in the thick of battle." in war.showStatus():
         war.vikingAttack()
         war.saxonAttack()
         print(f"round: {round} // Viking army: {len(war.vikingArmy)} warriors",f"and Saxon army: {len(war.saxonArmy)} warriors")

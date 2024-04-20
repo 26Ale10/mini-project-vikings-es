@@ -10,8 +10,8 @@ class War2():
             self.vikingCommander = two
             self.saxonCommander = one
 
-        print('%s lidera los Vikingos' % self.vikingCommander)
-        print('%s lidera los Sajones' % self.saxonCommander)
+        print("Vikings lead by %s" % self.vikingCommander)
+        print("Saxons lead by %s" % self.saxonCommander)
 
         self.vikingArmy = []
         self.saxonArmy = []
@@ -24,10 +24,10 @@ class War2():
 
     def vikingAttack(self):
         if len(self.saxonArmy) == 0:
-            print('No saxons alive be attacked')
+            print("No saxons from %s alive be attacked" % self.saxonCommander)
             return
         if len(self.vikingArmy) == 0:
-            print('No viking to attack')
+            print("No viking from %s to attack" % self.vikingCommander)
             return
 
         viking = random.choice(self.vikingArmy)
@@ -37,31 +37,33 @@ class War2():
 
         if saxon.health <= 0:
             self.saxonArmy.remove(saxon)
+            return "A Saxon of %s has died in combat" % self.saxonCommander
 
     def saxonAttack(self):
         if len(self.vikingArmy) == 0:
-            print('No vikings alive be attacked')
+            print("No vikings from %s alive be attacked" % self.vikingCommander)
             return
         if len(self.saxonArmy) == 0:
-            print('No saxon to attack')
+            print("No saxon from %s to attack" % self.saxonCommander)
             return
 
         viking = random.choice(self.vikingArmy)
         saxon = random.choice(self.saxonArmy)
 
-        viking.receiveDamage(saxon.strength)
+        msg = viking.receiveDamage(saxon.strength)
 
         if viking.health <= 0:
             self.vikingArmy.remove(viking)
-
+            return
+        return msg
 
     def showStatus(self):
         if len(self.saxonArmy) == 0:
-            print("¡Los Vikingos liderados por %s han ganado la guerra del siglo!" % self.vikingCommander)
+            return "Vikings of %s have won the war of the century!" % self.vikingCommander
         elif len(self.vikingArmy) == 0:
-            print("Los Sajones liderados %s han luchado por sus vidas y sobreviven otro día..." % self.saxonCommander)
+            return "Saxons of %s have fought for their lives and survive another day..." % self.saxonCommander
         else:
-            print("Los Vikingos de %s y los Sajones de %s todavía están en plena batalla." % (self.vikingCommander, self.saxonCommander))
+            return "Vikings of %s and Saxons of %s are still in the thick of battle." % (self.vikingCommander, self.saxonCommander)
 
     pass
 
