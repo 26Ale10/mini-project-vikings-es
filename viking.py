@@ -14,7 +14,7 @@ class Viking(Soldier):
         return '¡Odin os posee a todos!'
 
     def receiveDamage(self, damage) -> str:
-        self.health - damage
+        self.health -= damage
         if self.health <= 0:
             return f"{self.name} ha muerto en acto de combate"
         else:
